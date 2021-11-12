@@ -48,7 +48,10 @@ function gotDevices(deviceInfos) {
   });
 }
 
-navigator.mediaDevices.enumerateDevices().then(gotDevices).catch(handleError);
+TRTC.getDevices()
+  .then(gotDevices)
+  .catch((error) => console.error("getDevices error observed " + error));
+// navigator.mediaDevices.enumerateDevices().then(gotDevices).catch(handleError);
 
 // Attach audio output device to video element using device/sink ID.
 function attachSinkId(element, sinkId) {
